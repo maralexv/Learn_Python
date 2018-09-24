@@ -19,8 +19,8 @@ def display_board(board):
 ---------\n{board[6]} | {board[7]} | {board[8]}\n")
 
 
-test_board = ['', 2, 3, 4, 5, 6, 7, 8, 9]
-display_board(test_board)
+#test_board = ['', 2, 3, 4, 5, 6, 7, 8, 9]
+#display_board(test_board)
 
 
 def space_check(board, position):
@@ -31,7 +31,7 @@ def space_check(board, position):
         return False
 
 
-print(space_check(test_board, 1))
+#print(space_check(test_board, 1))
 
 
 def player_input(board):
@@ -41,15 +41,13 @@ def player_input(board):
         if position not in range(1, 10):
             print("Sorry, but you can choose only 1 through 9. Please try again")
         elif space_check(board, position):
-            print("Thanks")
             return position
-            break
         else:
             print("I am sorry, but this position is already occupied. Let's try again...")
 
 
-test_board = ['', 'X', '', '', 'O', 'X', '', '', 'O']
-player_input(test_board)
+#test_board = ['', 'X', '', '', 'O', 'X', '', '', 'O']
+#player_input(test_board)
 
 
 def mark_position(board, mark, position):
@@ -59,20 +57,40 @@ def mark_position(board, mark, position):
 
 def win_ceck(board):
     """ Check if one of the players has won"""
-    pass
+    return True
 
 
 def replay():
     """Ask if the players want to play again, start a new game if yes, end if not"""
-    que=input("Do you want to play one more time? ")
-    if que in ["Yes", "yes", "Yeah", "yeah", "Yep", "yep", "Y", "y"]:
-        board = ['' * 9]
-        return True
+    que = input("Do you want to play one more time? ")
+    if que in ("Yes", "yes", "Yeah", "yeah", "Yep", "yep", "Y", "y"):
+        the_game()
     else:
         print("See you next time!")
-        return False
+        return None
 
-"""
+
+def the_game():
+    """The actual game..."""
+    board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    position = 1
+    turn = 1
+    display_board(board)
+
+    while win_ceck(board):
+        if turn % 2 == 0:
+            marker = p2
+        else:
+            marker = p1
+
+        player_input(board)
+        mark_position(board, marker, position)
+        display_board(board)
+
+        turn += 1
+
+
+
 # Start the Game
 print("Welcome to Tic Tak Toe!")
 
@@ -81,7 +99,13 @@ player1 = input("\nPlayer 1, your name please: ")
 player2 = input("\nPlayer 2, your name please: ")
 
 # Player 1 chooses whether he/she will play as 'X' or 'O'
-p1 = input(f"\n{player1}, will you play 'X' or 'O'? Please choose: ")
+while True:
+    p1 = input(f"\n{player1}, will you play 'X' or 'O'? Please choose: ")
+    if p1 not in ('X', 'x', 'O', 'o'):
+        print("Sorry, wrong input. You should indicate 'X' or 'O' (letters). Please try again.")
+    else:
+        print("\nThanks")
+        break
 
 # The choice of Player 1 determines what Player 2 will play
 if p1 == "X" or p1 == "x":
@@ -89,5 +113,10 @@ if p1 == "X" or p1 == "x":
 else:
     p2 = "X"
 
-print(f"\nIn this case, {player2}, you will be playing '{p2}'.")
-"""
+print(f"Good. In this case, {player2}, you will be playing '{p2}'.\n")
+
+the_game()
+replay()
+
+
+
