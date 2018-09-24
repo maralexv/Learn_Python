@@ -10,6 +10,8 @@ symbol on the board.
 """
 
 # Collect names of the players
+print("Welcome to Tic Tak Toe\n")
+
 player1 = input("\nPlayer 1, your name please: ")
 player2 = input("\nPlayer 2, your name please: ")
 
@@ -23,3 +25,31 @@ else:
     p2 = "X"
 
 print(f"\nIn this case, {player2}, you will be playing '{p2}'.")
+
+
+def display_board(board):
+
+    pass
+
+
+def space_check(board):
+
+    pass
+
+
+def player_input():
+
+    pass
+
+
+def place_marker(board, marker, position):
+
+    pass
+
+
+def win_ceck(board, mark):
+
+    pass
+
+
+
