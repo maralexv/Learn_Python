@@ -10,7 +10,7 @@ symbol on the board.
 """
 
 # Collect names of the players
-print("Welcome to Tic Tak Toe\n")
+print("Welcome to Tic Tak Toe!")
 
 player1 = input("\nPlayer 1, your name please: ")
 player2 = input("\nPlayer 2, your name please: ")
