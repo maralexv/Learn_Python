@@ -13,34 +13,66 @@ someone has won, too, announce the winner and offer replay.
 
 def display_board(board):
     """Displays the 'board' with marks ('X' and 'O'), assigned to positions"""
-    pass
+    print('\n'*100)
+    print(f"{board[0]} | {board[1]} | {board[2]}\n\
+---------\n{board[3]} | {board[4]} | {board[5]}\n\
+---------\n{board[6]} | {board[7]} | {board[8]}\n")
 
 
-def space_check(board):
+test_board = ['', 2, 3, 4, 5, 6, 7, 8, 9]
+display_board(test_board)
+
+
+def space_check(board, position):
     """Checks if the position chosen is empty/free and tells to replay if it is not"""
-    pass
+    if not board[position-1]:
+        return True
+    else:
+        return False
 
 
-def player_input():
+print(space_check(test_board, 1))
+
+
+def player_input(board):
     """Ask player for position (1 through 9), where he/she wants to play"""
-    pass
+    while True:
+        position = int(input("Please tell me the position, where you would like to play: "))
+        if position not in range(1, 10):
+            print("Sorry, but you can choose only 1 through 9. Please try again")
+        elif space_check(board, position):
+            print("Thanks")
+            return position
+            break
+        else:
+            print("I am sorry, but this position is already occupied. Let's try again...")
+
+
+test_board = ['', 'X', '', '', 'O', 'X', '', '', 'O']
+player_input(test_board)
 
 
 def mark_position(board, mark, position):
     """Assign 'X' or 'O' (whichever the player plays to specified/chosen position"""
-    pass
+    board[position-1] = mark
 
 
-def win_ceck(board, mark):
+def win_ceck(board):
     """ Check if one of the players has won"""
     pass
 
 
 def replay():
     """Ask if the players want to play again, start a new game if yes, end if not"""
-    pass
+    que=input("Do you want to play one more time? ")
+    if que in ["Yes", "yes", "Yeah", "yeah", "Yep", "yep", "Y", "y"]:
+        board = ['' * 9]
+        return True
+    else:
+        print("See you next time!")
+        return False
 
-
+"""
 # Start the Game
 print("Welcome to Tic Tak Toe!")
 
@@ -58,3 +90,4 @@ else:
     p2 = "X"
 
 print(f"\nIn this case, {player2}, you will be playing '{p2}'.")
+"""
