@@ -100,7 +100,7 @@ def the_game(gameset):
             marker = gameset[1]
             player = gameset[0]
 
-        player_input(theboard, player)
+        position = player_input(theboard, player)
         mark_position(theboard, marker, position)
         display_board(theboard)
 
