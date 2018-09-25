@@ -10,34 +10,35 @@ someone has won, too, announce the winner and offer replay.
 
 """
 
+import random
 
 def display_board(board):
     """Displays the 'board' with marks ('X' and 'O'), assigned to positions"""
-    print('\n'*100)
+    #print('\n'*100)
     print(f"{board[0]} | {board[1]} | {board[2]}\n\
 ---------\n{board[3]} | {board[4]} | {board[5]}\n\
 ---------\n{board[6]} | {board[7]} | {board[8]}\n")
 
 
-#test_board = ['', 2, 3, 4, 5, 6, 7, 8, 9]
+#test_board = ['X', 2, 'O', 4, 'X', 6, 7, 8, 9]
 #display_board(test_board)
 
 
 def space_check(board, position):
     """Checks if the position chosen is empty/free and tells to replay if it is not"""
-    if not board[position-1]:
+    if board[position-1] in (1, 2, 3, 4, 5, 6, 7, 8, 9):
         return True
     else:
         return False
 
 
-#print(space_check(test_board, 1))
+#print(space_check(test_board, 2))
 
 
-def player_input(board):
+def player_input(board, playe_r):
     """Ask player for position (1 through 9), where he/she wants to play"""
     while True:
-        position = int(input("Please tell me the position, where you would like to play: "))
+        position = int(input(f"{playe_r}, please tell me the position, where you would like to play: "))
         if position not in range(1, 10):
             print("Sorry, but you can choose only 1 through 9. Please try again")
         elif space_check(board, position):
@@ -46,13 +47,18 @@ def player_input(board):
             print("I am sorry, but this position is already occupied. Let's try again...")
 
 
-#test_board = ['', 'X', '', '', 'O', 'X', '', '', 'O']
 #player_input(test_board)
 
 
 def mark_position(board, mark, position):
     """Assign 'X' or 'O' (whichever the player plays to specified/chosen position"""
     board[position-1] = mark
+    return board
+
+
+#display_board(test_board)
+#mark_position(test_board, "X", 9)
+#display_board(test_board)
 
 
 def win_ceck(board):
@@ -70,53 +76,54 @@ def replay():
         return None
 
 
-def the_game():
+def assign_xo():
+    """Randomly assigns 'X' or 'O' to players"""
+    c = random.random()
+    if c < .50000000001:
+        return True
+
+#print(assign_xo())
+
+
+def the_game(gameset):
     """The actual game..."""
-    board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-    position = 1
+    theboard = [x for x in range(1, 10)]
+    #position = 1
     turn = 1
-    display_board(board)
+    display_board(theboard)
 
-    while win_ceck(board):
+    while win_ceck(theboard):
         if turn % 2 == 0:
-            marker = p2
+            marker = gameset[3]
+            player = gameset[2]
         else:
-            marker = p1
+            marker = gameset[1]
+            player = gameset[0]
 
-        player_input(board)
-        mark_position(board, marker, position)
-        display_board(board)
+        player_input(theboard, player)
+        mark_position(theboard, marker, position)
+        display_board(theboard)
 
         turn += 1
 
 
-
 # Start the Game
-print("Welcome to Tic Tak Toe!")
+
+print("\nWelcome to Tic Tak Toe!")
 
 # Collect names of the players
 player1 = input("\nPlayer 1, your name please: ")
 player2 = input("\nPlayer 2, your name please: ")
 
-# Player 1 chooses whether he/she will play as 'X' or 'O'
-while True:
-    p1 = input(f"\n{player1}, will you play 'X' or 'O'? Please choose: ")
-    if p1 not in ('X', 'x', 'O', 'o'):
-        print("Sorry, wrong input. You should indicate 'X' or 'O' (letters). Please try again.")
-    else:
-        print("\nThanks")
-        break
-
-# The choice of Player 1 determines what Player 2 will play
-if p1 == "X" or p1 == "x":
-    p2 = "O"
+# Players are randomly assigned what they will play with 'X' or 'O'
+if assign_xo():
+    setup = (player1, 'X', player2, 'O')
+    print(f"\nThis round {setup[0]} shall play {setup[1]} and {setup[2]} shall play {setup[3]}.\n{setup[0]} starts.\n")
 else:
-    p2 = "X"
+    setup = (player2, 'X', player1, 'O')
+    print(f"\nThis round {setup[0]} shall play {setup[1]} and {setup[2]} shall play {setup[3]}.\n{setup[0]} starts.\n")
 
-print(f"Good. In this case, {player2}, you will be playing '{p2}'.\n")
+a = input("Please press 'ENTER' key to continue.")
 
-the_game()
+the_game(setup)
 replay()
-
-
-
