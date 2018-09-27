@@ -61,16 +61,55 @@ def mark_position(board, mark, position):
 #display_board(test_board)
 
 
-def win_ceck(board):
+def check_hor(board):
+    for i in range(0,7,3):
+        if board[i] == board[i+1] and board[i] == board[i+2]:
+            return True
+
+
+def check_vert(board):
+    for z in range(0, 3):
+        if board[z] == board[z + 3] and board[z] == board[z + 6]:
+            return True
+
+
+def check_diag(board):
+    if board[0] == board[4] and board[0] == board[8]:
+        return True
+    elif board[2] == board[4] and board[2] == board[6]:
+        return True
+
+
+def win_ceck(board, player):
     """ Check if one of the players has won"""
-    return True
+    if check_hor(board) or check_vert(board) or check_diag(board):
+        print(f"\n{player}, you have won!\n Game Over")
+        return False
+    else:
+        return True
+
+
+#test_board = ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'O']
+#player = "Bob"
+#display_board(test_board)
+#win_ceck(test_board, player)
 
 
 def replay():
     """Ask if the players want to play again, start a new game if yes, end if not"""
     que = input("Do you want to play one more time? ")
     if que in ("Yes", "yes", "Yeah", "yeah", "Yep", "yep", "Y", "y"):
-        the_game(gameset)
+        if assign_xo():
+            setup = (player1, 'X', player2, 'O')
+            print(
+                f"\nThis round {setup[0]} shall play {setup[1]} and {setup[2]} shall play {setup[3]}.\n{setup[0]} starts.\n")
+        else:
+            setup = (player2, 'X', player1, 'O')
+            print(
+                f"\nThis round {setup[0]} shall play {setup[1]} and {setup[2]} shall play {setup[3]}.\n{setup[0]} starts.\n")
+
+        a = input("Please press 'ENTER' key to continue.")
+        the_game(setup)
     else:
         print("See you next time!")
         return None
@@ -78,7 +117,7 @@ def replay():
 
 def assign_xo():
     """Randomly assigns 'X' or 'O' to players"""
-    if random.random() < .5000000001:
+    if random.random() < .50000000001:
         return True
 
 #print(assign_xo())
@@ -88,21 +127,26 @@ def the_game(gameset):
     """The actual game..."""
     theboard = [x for x in range(1, 10)]
     turn = 1
+    player = gameset[0]
     display_board(theboard)
 
-    while win_ceck(theboard):
-        if turn % 2 == 0:
-            marker = gameset[3]
-            player = gameset[2]
+    while win_ceck(theboard, player):
+        if turn == 10:
+            break
         else:
-            marker = gameset[1]
-            player = gameset[0]
+            if turn % 2 == 0:
+                marker = gameset[3]
+                player = gameset[2]
+            else:
+                marker = gameset[1]
+                player = gameset[0]
 
-        position = player_input(theboard, player)
-        mark_position(theboard, marker, position)
-        display_board(theboard)
-
-        turn += 1
+            position = player_input(theboard, player)
+            mark_position(theboard, marker, position)
+            display_board(theboard)
+            if not win_ceck(theboard, player):
+                break
+            turn += 1
 
 
 # Start the Game
