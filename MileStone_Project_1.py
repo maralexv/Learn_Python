@@ -70,7 +70,7 @@ def replay():
     """Ask if the players want to play again, start a new game if yes, end if not"""
     que = input("Do you want to play one more time? ")
     if que in ("Yes", "yes", "Yeah", "yeah", "Yep", "yep", "Y", "y"):
-        the_game()
+        the_game(gameset)
     else:
         print("See you next time!")
         return None
@@ -78,8 +78,7 @@ def replay():
 
 def assign_xo():
     """Randomly assigns 'X' or 'O' to players"""
-    c = random.random()
-    if c < .50000000001:
+    if random.random() < .5000000001:
         return True
 
 #print(assign_xo())
@@ -88,7 +87,6 @@ def assign_xo():
 def the_game(gameset):
     """The actual game..."""
     theboard = [x for x in range(1, 10)]
-    #position = 1
     turn = 1
     display_board(theboard)
 
