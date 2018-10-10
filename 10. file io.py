@@ -24,20 +24,20 @@ the file for both reading and writing. The mode argument is optional;
 
 """
 
-f = open('myfile.txt', 'w')
+myfile = open('my_file.txt', 'w')
 
 
 """
-f.write(string) writes the contents of string to the file, returning 
+myfile.write(string) writes the contents of string to the file, returning 
 the number of characters written. "\n" is a cmmand to move to next line.
 
->>> f.write('This is a test\n')
+>>> myfile.write('This is a test\n')
 
 """
 
-f.write('This is a test\nIt is my first file with Python\nLine 1\n')
+myfile.write('This is a test\nIt is my first file with Python\nLine 1\n')  # Write into the file
 
-f.close() # need to close file after use
+myfile.close() # need to close file after use
 
 
 """
@@ -50,13 +50,13 @@ machine’s memory.
 
 """
 
-f = open('myfile.txt') 	# r mode is assumed, when ommitted
-print(f.read())				# python has read file and is at the end of it
-f.seek(0)				# need to move back to beginning (position 0)
-read_file_data = f.read()
+myfile = open('my_file.txt') 	# r mode is assumed, when ommitted
+print(myfile.read())			# python has read file and is at the end of it
+myfile.seek(0)					# need to move back to beginning (position 0)
+read_file_data = myfile.read()
 print (read_file_data)
 
-f.close()
+myfile.close()
 
 """
 It is good practice to use the with keyword when dealing with file 
@@ -69,16 +69,16 @@ to f.close()
 
 """
 
-with open('myfile.txt') as f:
+with open('my_file.txt') as f:
 	read_file_data = f.read()
 	print (read_file_data)
 
 
-with open('myfile.txt', 'a+') as f:	# open in 'append' mode
+with open('my_file.txt', 'a+') as f:	# open in 'append' mode
 	for line in range (2,11):
 		f.write(f'line {line}\n')
 
-with open('myfile.txt') as f:
+with open('my_file.txt') as f:
 	print(f.read())
 
 
@@ -89,8 +89,8 @@ Python data hierarchies, and convert them to string representations;
 this process is called serializing. 
 
 Note The JSON format is commonly used by modern applications to allow 
- for data exchange. Many programmers are already familiar with it, which 
- makes it a good choice for interoperability.
+for data exchange. Many programmers are already familiar with it, which 
+makes it a good choice for interoperability.
 
 If you have an object x, you can view its JSON string representation 
 with a simple line of code:
