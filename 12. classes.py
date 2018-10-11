@@ -11,7 +11,7 @@ class Dog ():
     species = 'mammal'
 
     # Define Instance
-    def __init__(self,breed,name,spots):
+    def __init__(self, breed, name, spots):
         # Attributes (attribute_name)
         # We take in the argument
         # Assign it to self.attribute_name
