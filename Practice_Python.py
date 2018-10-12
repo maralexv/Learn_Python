@@ -254,7 +254,7 @@ print(f'{number_of_primes2(100)}\n')
 
 # Classes and Methods:
 
-class Circle:
+class Circle():
     # CLASS OBJECT ATTRIBUTE:
     pi = 3.14159
 
@@ -278,11 +278,12 @@ print('%0.2f\n' % my_circle.circle_surface())
 # Method to calculate the volume and surface area of a cilinder:
 
 
-class Cylinder:
+class Cylinder():
 
     # CLASS OBJECT ATTRIBUTE
     pi = 3.14159
 
+    # INSTANCE ATTIRUTES
     def __init__(self, height=1, radius=1):
         self.height = height
         self.radius = radius
@@ -299,12 +300,14 @@ print('%0.2f' % c.volume())
 print('%0.2f\n' % c.surface_area())
 
 
-class Line:
+class Line():
 
+    # INSTANCE ATTIRUTES
     def __init__(self, dot1=(0, 0), dot2=(0, 0)):
         self.dot1 = dot1
         self.dot2 = dot2
 
+    # METHODS
     def distance(self):
         return ((self.dot2[1]-self.dot1[1])**2 + (self.dot2[0]-self.dot1[0])**2)**(1/2)
 
@@ -319,3 +322,54 @@ li = Line(d1, d2)
 
 print('%10.3f' % li.distance())
 print(li.slope())
+
+
+""" --------- Bank Account Class ------------"""
+
+
+class BankAccount():
+
+    # INSTANCE ATTIRUTES
+    def __init__(self, client = "Name Surname", currency = "€", balance = 0.0):
+
+        self.client = client
+        self.currency = currency
+        self.balance = balance
+
+    # METHODS
+    def checkacc (self):
+
+        print("\nAccount Name: {};\nAccount balance: {}{:0.2f};\n".format(self.client, self.currency, self.balance))
+
+    def deposit (self):
+
+        amount = float(input(f"{self.client}, how much would you like to deposit? "))
+        self.balance = self.balance + amount
+        print (f"The amount {self.currency}{amount} has been added to your account.\n")
+
+    def withdraw (self):
+
+        amount = float(input(f"{self.client}, how much would you like to withdraw? "))
+        if self.balance < amount:
+            print(f"Sorry, you do not have enough funds on the account for this transaction.\n")
+        else:
+            self.balance = self.balance - amount
+            print(f"The amount {self.currency}{amount} has been withdrawn from your account.\n")
+            print(f"The available balance on your account is {self.currency}{self.balance}")
+
+
+    # SPECIAL METHOD THAT ALLOWS PRINTING OF THE OBJECT
+    def __str__ (self):
+        return "\nAccount Name: {};\nAccount balance: {}{:0.2f};\n".format(self.client, self.currency, self.balance)
+
+
+
+a = BankAccount("Alex Marchenko")
+print (a)
+a.deposit()
+a.withdraw()
+print(a)
+a.withdraw()
+print(a)
+a.checkacc()
+
