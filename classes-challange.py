@@ -11,9 +11,9 @@ class BankAccount():
         self.balance = balance
 
 
-    def checkaccount (self):
+    def checkacc (self):
 
-        print(f"\nAccount Name: {self.client}.\nAccount balance: {self.currency}{self.balance}.\n")
+        print("\nAccount Name: {};\nAccount balance: {}{:0.2f};\n".format(self.client, self.currency, self.balance))
 
 
     def deposit (self):
@@ -34,11 +34,16 @@ class BankAccount():
             print(f"The available balance on your account is {self.currency}{self.balance}")
 
 
+    def __str__ (self):
+        return "\nAccount Name: {};\nAccount balance: {}{:0.2f};\n".format(self.client, self.currency, self.balance)
 
-myaccount = BankAccount("Alex Marchenko")
-myaccount.checkaccount()
-myaccount.deposit()
-myaccount.checkaccount()
-myaccount.withdraw()
-myaccount.checkaccount()
-myaccount.withdraw()
+
+
+a = BankAccount("Alex Marchenko")
+print (a)
+a.deposit()
+a.withdraw()
+print(a)
+a.withdraw()
+print(a)
+a.checkacc()
