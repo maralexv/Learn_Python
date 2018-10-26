@@ -230,8 +230,8 @@ print('\n')
 
 
 
-""" Count the number of primes: function that returns the 
-number of prime numbers that exist up to and including a 
+""" Count the number of primes: function that returns the
+number of prime numbers that exist up to and including a
 given numbe """
 
 def check_if_prime2(num):
@@ -372,4 +372,3 @@ print(a)
 a.withdraw()
 print(a)
 a.checkacc()
-
