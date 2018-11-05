@@ -18,8 +18,6 @@ print (lst)
 
 
 
-"""
-
 school = 'Massachusetts Institute of Technology'
 num_vowels = 0
 num_cons = 0
@@ -35,5 +33,3 @@ for chara in school:
 
 print('num_vowels is: ' + str(num_vowels))
 print('num_cons is: ' + str(num_cons))
-
-"""
