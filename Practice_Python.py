@@ -372,3 +372,18 @@ print(a)
 a.withdraw()
 print(a)
 a.checkacc()
+
+# --------------------------------------------------
+
+# FIBONNACCI NUMBERS:
+def fibonnacci (n):
+    a = 0
+    b = 1
+    for item in range(n+1):
+        yield a
+        a, b = b, a + b
+
+
+# SPLIT DOMAIN FORM E-MAIL:
+email = 'name.surname@domain.com'
+print(email.split("@"))
