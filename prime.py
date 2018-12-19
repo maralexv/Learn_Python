@@ -36,12 +36,13 @@ def isprime(n):
 	#And mark as Prime, if not:
 	return True
 
-def Primes_list(given_n):
+def primes_list(given_n):
 	''' Build the list of prime numbers, using 'isprime' function'''
-	return [x for x in range(2,given_n+1) if isprime(x)]
+	return [str(x) for x in range(2,given_n+1) if isprime(x)]
 
 # test by outputting the result (mark as comment if and when not needed)
-print(Primes_list(99))
+result = ' '.join(primes_list(99))
+print(result)
 
 
 # Another way of doing it:
