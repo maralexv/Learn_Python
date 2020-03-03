@@ -2,6 +2,23 @@
 
 
 # LISTS
+
+""" 
+Method		Description
+append()	Adds an element at the end of the list
+clear()		Removes all the elements from the list
+copy()		Returns a copy of the list
+count()		Returns the number of elements with the specified value
+extend()	Add the elements of a list (or any iterable), to the end of the current list
+index()		Returns the index of the first element with the specified value
+insert()	Adds an element at the specified position
+pop()		Removes the element at the specified position
+remove()   	Removes the first item with the specified value
+reverse()	Reverses the order of the list
+sort()		Sorts the list
+
+"""
+
 print("\nLists")
 
 [1,2,3,]
@@ -10,9 +27,10 @@ print("\nLists")
 # Defining List
 thislist = ["apple", "banana", "cherry"]
 print(thislist)
-L = list('spam')
+# Another way of defining a list
+L = list('spam') #creates a list of characters form string
 print(L)
-# Printing 2nd element of the List
+# Changing 2nd element of the list
 thislist[1] = "blackcurrant"
 print(thislist)
 
@@ -24,6 +42,18 @@ print(thislist)
 thislist.append("damson")
 print(thislist)
 
+# Insert an element in the list in defined position
+thislist.insert(1, "orange")
+print(thislist)
+
+# Reverse the list
+thislist.reverse()
+print(thislist)
+
+# Sort the list items
+thislist.sort()
+print(thislist)
+
 # Remove specific element from the List
 thislist.remove("banana") # removes item with specific value
 print(thislist)
@@ -32,6 +62,9 @@ print(thislist)
 
 # Length of the List
 print(len(thislist))
+
+# Counnnt how many times an item of particular value appears in the list
+print(thislist.count('orange'))
 
 # Nested Lists:
 thislist.append(L)
@@ -43,21 +76,6 @@ print(matrix[1])
 print(matrix[2][2])
 print(matrix[:2])
 
-""" 
-Method		Description
-append()	    Adds an element at the end of the list
-clear()		Removes all the elements from the list
-copy()		Returns a copy of the list
-count()		Returns the number of elements with the specified value
-extend()	    Add the elements of a list (or any iterable), to the end of the current list
-index()		Returns the index of the first element with the specified value
-insert()	    Adds an element at the specified position
-pop()		Removes the element at the specified position
-remove()   	Removes the first item with the specified value
-reverse()	Reverses the order of the list
-sort()		Sorts the list
-
-"""
 
 
 # TUPLES
@@ -82,6 +100,8 @@ print(len(thistuple))
 a, b, c = thistuple
 print(a, b, c)
 
+
+
 # SETS
 print("\nSets")
 
@@ -99,6 +119,7 @@ print(thisset)
 
 # Determining the length of Set (number of items in Set)
 print(len(thisset))
+
 
 
 # DICTIONARIES
