@@ -55,6 +55,12 @@ print(myfile.read())			# python has read file and is at the end of it
 myfile.seek(0)					# need to move back to beginning (position 0)
 read_file_data = myfile.read()
 print (read_file_data)
+myfile.read()					# returns a string of 10 initial characters from the file
+myfile.readlines()				# returns a list of strings, each representing 
+								# a single line of the file. If n (10 in this example) 
+								# is not provided then all lines of the file are
+								# returned. If n is provided then n characters are read
+								# but n is rounded up so that an entire line is returned.
 
 myfile.close()
 
@@ -70,11 +76,11 @@ to f.close()
 """
 
 with open('my_file.txt') as f:
-	read_file_data = f.read()
+	read_file_data = f.readlines()
 	print (read_file_data)
 
 
-with open('my_file.txt', 'a+') as f:	# open in 'append' mode
+with open('my_file.txt', 'a+') as f:	# 'a+' = open in 'append' mode
 	for line in range (2,11):
 		f.write(f'line {line}\n')
 
@@ -105,13 +111,40 @@ with a simple line of code:
 
 import json
 
-L=[1,'SIMPLE',2.34,'list']
+content={'node1': [1,'SIMPLE',2.34,'list']}
 
 file = open('my_json_file.json', 'w')
-json.dump(L, file)
+json.dump(content, file)
 file.close()
 
 with open('my_json_file.json') as f:
 	print(f.read())
 
+'''
+simple manipulations woth the content of the file
+'''
+
+with open('my_file.txt') as f:
+	num_lines = len(f.readlines())
+	f.seek(0)	# need to return to the start of the file	
+	num_char = len(f.read())
+	print(f'The number of characters in the file is {num_char}\nAnd the number of lines is {num_lines}.')
+
+'''
+Working with .csv files
+'''
+
+olympians = [("John Aalberg", 31, "Cross Country Skiing, 15KM"),
+             ("Minna Maarit Aalto", 30, "Sailing"),
+             ("Win Valdemar Aaltonen", 54, "Art Competitions"),
+             ("Wakako Abe", 18, "Cycling")]
+
+with open('olymp.csv', 'w') as f:
+	csv_header = 'Name,Age,Sport'
+	f.write(csv_header)
+	f.write('\n')
+	for el in olympians:
+		csv_row = '{},{},{}'.format(*el)
+		f.write(csv_row)
+		f.write('\n')
 
