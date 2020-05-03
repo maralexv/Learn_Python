@@ -158,3 +158,20 @@ print(len(thisdict))
 # Nested Dictionaries
 thisdict["dict"] = mydict
 print(thisdict)
+
+'''
+Dictionary Methods 
+.keys() - returns a view of all keys
+.values() - returns a view of all values
+.items()  - returns a view of key-value pairs
+.get(key) - returns the value, associated with the key (None otherwise)
+'''
+
+print(list(thisdict.keys()))
+print(tuple(thisdict.values()))
+print(list(mydict.items()))
+print(mydict.get('apple'))
+
+print(thisdict.keys())
+print(thisdict.values())
+print(mydict.items())
