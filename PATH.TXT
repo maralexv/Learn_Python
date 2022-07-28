@@ -1,1 +1,0 @@
-cd dropbox\theo_dad_share\papa_coding\learn_python
