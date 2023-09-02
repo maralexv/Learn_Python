@@ -2,7 +2,7 @@ import random
 import csv
 
 # define the list of numbers for the excercises
-int_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+int_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 # define the list of mathematical operators to be used in the excercises
 ops_list = ['add', 'sub']
@@ -59,4 +59,3 @@ with open(file, 'w') as f:
 
     # write rows into csv file
     csvwriter.writerows(rows)
-
